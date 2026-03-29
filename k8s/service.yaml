@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: go-gin
+  namespace: go-gin
+  labels:
+    app: go-gin
+spec:
+  type: ClusterIP
+  selector:
+    app: go-gin
+  ports:
+  - port: 80
+    targetPort: 8080
+    protocol: TCP
+    name: http

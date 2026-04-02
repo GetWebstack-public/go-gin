@@ -1,0 +1,18 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: GRPCRoute
+metadata:
+  name: go-gin
+  namespace: go-gin
+spec:
+  parentRefs:
+  - name: gws-gateway
+    namespace: gws-system
+  hostnames:
+  - go-gin.go-gin.local.getwebstack.dev
+  rules:
+  - matches:
+    - method:
+        service: api.Greeter
+    backendRefs:
+    - name: go-gin
+      port: 50051
